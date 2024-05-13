@@ -1,13 +1,13 @@
-% DAFN23 - Robotics - Lecture 3
+% DAFN24 - Robotics - Lecture 3
 % Roberto Masocco <roberto.masocco@uniroma2.it>
-% May 24, 2023
+% May 14, 2024
 
 \documentclass[aspectratio=169]{beamer}
 
 % Slides layout
 \usepackage[
     title={ROS 2},
-    subtitle={Advanced communication},
+    subtitle={Advanced communication I},
     event={DAFN},
     author={Roberto Masocco},
     longauthor={Roberto Masocco},
@@ -16,7 +16,7 @@
     longinstitute={University of Rome Tor Vergata},
     department={Department of Civil Engineering and Computer Science Engineering},
     researchgroup={},
-    date={May 24, 2023}
+    date={May 14, 2024}
 ]{utvengbeamer}
 
 % Code listings settings
@@ -78,19 +78,10 @@
 % --- Exercises ---
 \begin{frame}{Exercises}
 	\begin{itemize}
+    \item Add a timer to the subscriber in the \texttt{topic\_pubsub\_cpp} package to periodically toggle the ROS 2 subscriber on and off; how would you do that?\\
+    (Solution: \href{https://github.com/IntelligentSystemsLabUTV/ros2-examples/blob/humble/src/cpp/topic_pubsub_cpp/src/resetting_sub.cpp}{\color{blue}\underline{\texttt{resetting\_sub}}} example.)
 		\item Run the service client and server examples, and try to call the service from the command line.
 		\item Create two new packages for server and client nodes, and for a custom service definition named \texttt{CapString.srv}; the server should take a string as input and return two strings: the same string fully capitalized, and the number of characters in the string.
-	\end{itemize}
-\end{frame}
-\begin{frame}{Exercises}
-	\begin{itemize}
-		\item Run the action client and server examples, and try to call the action from the command line.
-		\item Modify the feedback message: instead of a partial sequence, it should publish the length of the sequence so far; this requires:
-		      \begin{enumerate}
-			      \item modifying the action definition in \texttt{ros2\_examples\_interfaces};
-			      \item modifying the server node to publish the length of the sequence instead of the partial sequence in the feedback message (hint: use methods of the \texttt{std::vector} class to get the length of the partial sequence in one go);
-			      \item modifying the feedback callback in the client to parse and print the length from the feedback message.
-		      \end{enumerate}
 	\end{itemize}
 \end{frame}
 
