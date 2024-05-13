@@ -13,8 +13,8 @@
     \item execute \textbg{computations} (\emph{e.g.}, \texttt{1 + 1 = 2}), using regular \textbg{CPU} instructions;
     \item access \textbg{system resources} (both \textbg{hardware} and \textbg{software}) through calls to the \textbg{kernel} (\emph{i.e.}, \textbg{system calls}), \textbg{exchanging data} in both directions.
   \end{itemize}
-  When these resources are not part of the OS, but rather the OS enables tasks to interface\footnote{Drivers, protocols, software stacks...} with them, we talk about \textbg{I/O} (\emph{Input/Output}).
-  \newline\newline
+  When these resources are not part of the OS, but rather the OS enables tasks to interface\footnote{Drivers, protocols, software stacks...} with them, we talk about \textbg{I/O} (\emph{Input/Output}).\\
+  \bigskip
   OS schedulers typically distinguish between \textbg{CPU-bound} and \textbg{I/O-bound} tasks, because of their different \textbg{execution patterns}.
 \end{frame}
 
@@ -28,13 +28,13 @@
     \item the OS \textbg{returns control} to the task when the system call is completed;
     \item \textbg{output data}, returned by the kernel, can be accessed by the task.
   \end{enumerate}
-  This is \textbg{blocking I/O}, because the task is \textbg{blocked} while waiting for the system call to complete.
-  \newline\newline
+  This is \textbg{blocking I/O}, because the task is \textbg{blocked} while waiting for the system call to complete.\\
+  \bigskip
   Examples of \textbg{blocking calls}: \texttt{read}, \texttt{write} to \textbg{file descriptors}.
 \end{frame}
 
 % --- Non-blocking I/O ---
-\begin{frame}{Non-blocking I/O}{What userspace application like the most}
+\begin{frame}{Non-blocking I/O}{What userspace applications like the most}
   If the kernel supports this feature, a task can perform a \textbg{non-blocking system call}:
   \begin{enumerate}
     \item prepare the \textbg{input data} for the system call;
@@ -42,15 +42,15 @@
     \item the OS \textbg{returns control} to the task \textbg{immediately}, without blocking it;
     \item the task can \textbg{poll} the system call \textbg{status} to check if it is completed;
     \item when the system call is completed, the task can \textbg{access the output data};
-    \item optionally, a \textbg{callback} routine can be registered to be executed right when the system call is completed.
+    \item optionally, a userspace \textbg{callback} routine can be registered to be executed right when the system call is completed.
   \end{enumerate}
-  This is \textbg{non-blocking I/O} (or \emph{asynchronous I/O}, or \emph{overlapped I/O}), because the task is \textbg{not blocked} while waiting for the system call to complete, and things can happen in between.
-  \newline\newline
+  This is \textbg{non-blocking I/O} (or \emph{asynchronous I/O}, or \emph{overlapped I/O}), because the task is \textbg{not blocked} while waiting for the system call to complete, and things can happen in between.\\
+  \bigskip
   Examples of \textbg{non-blocking calls}: \texttt{read}, \texttt{write} to \textbg{sockets} configured appropriately.
 \end{frame}
-\begin{frame}{Non-blocking I/O}{What userspace application like the most}
-  Usually, the operation status can be inspected through some kind of \textbg{handle object} returned by the API.
-  \newline\newline
+\begin{frame}{Non-blocking I/O}{What userspace applications like the most}
+  Usually, the operation status can be inspected through some kind of \textbg{handle object} returned by the API.\\
+  \bigskip
   Some \textbg{programming languages} implement \textbg{future objects}: datatypes that hold the result of an asynchronous operation, which can be inspected to check if the operation is completed, and to retrieve the result once it is; \textbg{they are said to hold a value only when the operation is completed}.
   \begin{alertblock}{}
     \centering
